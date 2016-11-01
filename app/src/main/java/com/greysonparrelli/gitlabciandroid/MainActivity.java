@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
                 String n1Text = num1View.getText().toString();
                 String n2Text = num2View.getText().toString();
 
-                if (InputValidator.getInstance().isValidInt(n1Text) && InputValidator.getInstance().isValidInt(n2Text)) {
+                if (InputValidator.getInstance().isInt(n1Text) && InputValidator.getInstance().isInt(n2Text)) {
                     int n1 = Integer.parseInt(n1Text);
                     int n2 = Integer.parseInt(n2Text);
 

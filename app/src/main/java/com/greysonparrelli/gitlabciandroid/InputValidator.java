@@ -14,7 +14,7 @@ public class InputValidator {
         return INSTANCE;
     }
 
-    public boolean isValidInt(String input) {
+    public boolean isInt(String input) {
         try {
             Integer.parseInt(input);
             return true;
