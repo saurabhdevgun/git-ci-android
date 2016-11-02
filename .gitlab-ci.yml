@@ -19,9 +19,19 @@ before_script:
   - export ANDROID_HOME=$PWD/android-sdk-linux
   - chmod +x ./gradlew
 
+stages:
+  - build
+  - test
+
 build:
+  stage: build
   script:
     - ./gradlew assembleDebug
   artifacts:
     paths:
     - app/build/outputs/
+
+unitTests:
+  stage: test
+  script:
+    - ./gradlew test
