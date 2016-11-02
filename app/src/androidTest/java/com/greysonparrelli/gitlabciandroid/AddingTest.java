@@ -21,10 +21,15 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 @RunWith(AndroidJUnit4.class)
-public class AddingTest {
+public class AddingTest extends TestBase {
 
     @Rule
     public ActivityTestRule<MainActivity> mActivityRule = new ActivityTestRule<>(MainActivity.class);
+
+    @Override
+    ActivityTestRule getActivityRule() {
+        return mActivityRule;
+    }
 
     @Test
     public void addNumbers() throws Exception {
