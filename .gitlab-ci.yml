@@ -12,12 +12,10 @@ before_script:
   - tar --extract --gzip --file=android-sdk.tgz
   - echo y | android-sdk-linux/tools/android --silent update sdk --no-ui --all --filter android-${ANDROID_TARGET_SDK}
   - echo y | android-sdk-linux/tools/android --silent update sdk --no-ui --all --filter platform-tools
-  - echo y | android-sdk-linux/tools/android --silent update sdk --no-ui --all --filter build-tools-${ANDROID_BUILD_TOOLS}
-  - echo y | android-sdk-linux/tools/android --silent update sdk --no-ui --all --filter extra-android-m2repository
-  - echo y | android-sdk-linux/tools/android --silent update sdk --no-ui --all --filter extra-google-google_play_services
-  - echo y | android-sdk-linux/tools/android --silent update sdk --no-ui --all --filter extra-google-m2repository
   - export ANDROID_HOME=$PWD/android-sdk-linux
   - export PATH=$PATH:/android-sdk-linux/platform-tools/
+  - echo $PATH
+  - pwd
   - chmod +x ./gradlew
 
 stages:
@@ -27,10 +25,9 @@ functionalTests:
   stage: test
   script:
     - wget --quiet --output-document=android-wait-for-emulator https://raw.githubusercontent.com/travis-ci/travis-cookbooks/0f497eb71291b52a703143c5cd63a217c8766dc9/community-cookbooks/android-sdk/files/default/android-wait-for-emulator
+    - echo $PATH
+    - ls
+    - pwd
+    - export PATH=$PATH:/android-sdk-linux/platform-tools/ &&  adb devices
     - chmod +x android-wait-for-emulator
-    - echo y | android-sdk-linux/tools/android --silent update sdk --no-ui --all --filter sys-img-armeabi-v7a-android-${ANDROID_TARGET_SDK}
-    - echo no | android-sdk-linux/tools/android create avd -n test -t android-${ANDROID_TARGET_SDK}
-    - android-sdk-linux/tools/emulator -avd test -no-skin -no-audio -no-window -force-32bit &
     - ./android-wait-for-emulator
-    - adb shell input keyevent 82 &
-    - ./gradlew cAT
