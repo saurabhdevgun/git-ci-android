@@ -6,7 +6,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 /**
- * Adds numbers together.
+ * Tests the {@link Adder} class.
  *
  * @author Greyson Parrelli (keybase.io/greyson)
  */

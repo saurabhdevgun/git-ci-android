@@ -18,6 +18,7 @@ public abstract class TestBase {
 
     @Before
     public void setup() {
+        // Unlock the screen if it's locked
         UiDevice device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
         try {
             device.wakeUp();
@@ -25,6 +26,7 @@ public abstract class TestBase {
             e.printStackTrace();
         }
 
+        // Set the flags on our activity so it'll appear regardless of lock screen state
         final Activity activity = getActivityRule().getActivity();
         Runnable wakeUpDevice = new Runnable() {
             public void run() {

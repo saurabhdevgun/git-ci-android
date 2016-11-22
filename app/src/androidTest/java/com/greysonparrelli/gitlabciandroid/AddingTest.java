@@ -16,9 +16,9 @@ import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 
 /**
- * Instrumentation test, which will execute on an Android device.
+ * Tests the adding flow in the app.
  *
- * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
+ * @author Greyson Parrelli (keybase.io/greyson)
  */
 @RunWith(AndroidJUnit4.class)
 public class AddingTest extends TestBase {
